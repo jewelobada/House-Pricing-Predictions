@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request
+import os
+import joblib
 import pickle
 import numpy as np
 
 app = Flask(__name__)
 
-# Load saved model
-with open("model/house_price_model.pkl", "rb") as f:
-    model = pickle.load(f)
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model', 'house_price_model.pkl')
+model = joblib.load(MODEL_PATH)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -28,3 +29,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
