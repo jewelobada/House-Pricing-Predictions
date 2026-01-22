@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Predictor</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffe6f0, #fff0f6);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 360px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.25);
+            text-align: center;
+        }
+
+        h2 {
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #f3b6d2;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #d63384;
+            box-shadow: 0 0 5px rgba(214, 51, 132, 0.3);
+        }
+
+        button {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #c22575;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #ffe0ed;
+            padding: 12px;
+            border-radius: 12px;
+            color: #a61e5c;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>🏠 House Price Predictor</h2>
+
+        <form method="POST">
+            <input name="OverallQual" placeholder="Overall Quality (1–10)" required>
+            <input name="GrLivArea" placeholder="Living Area (sq ft)" required>
+            <input name="TotalBsmtSF" placeholder="Basement Area (sq ft)" required>
+            <input name="GarageCars" placeholder="Garage Cars" required>
+            <input name="FullBath" placeholder="Full Bathrooms" required>
+            <input name="YearBuilt" placeholder="Year Built" required>
+
+            <button type="submit">Predict Price 💗</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                Predicted Price: ${{ prediction | round(2) }}
+            </div>
+        {% endif %}
+
+        <div class="footer">
+            Made with 💕 by Jewel
+        </div>
+    </div>
+
+</body>
+</html>
